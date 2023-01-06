@@ -9,7 +9,7 @@
             Console.WriteLine("2 - Deletar um usuário");
             Console.WriteLine("3 - Detalhes de um usuário");
             Console.WriteLine("4 - Inserir novo usuário");
-            Console.WriteLine("1 - Inserir novo usuário");
+            Console.WriteLine("0 - Para sair");
             Console.Write("Digite a opção desejada: ");
         }
         public static void Main(string[] args) {
