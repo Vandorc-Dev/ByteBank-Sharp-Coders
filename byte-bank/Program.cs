@@ -10,19 +10,43 @@
             Console.WriteLine("3 - Listar todas as contas registradas");
             Console.WriteLine("4 - Detalhes de um usuário");
             Console.WriteLine("5 - Inserir novo usuário");
+            Console.WriteLine("6 - Manipular uma conta");
             Console.WriteLine("0 - Para sair");
             Console.Write("Digite a opção desejada: ");
         }
 
-        static void RegistrarNovoUsuario(List<string> cpfs, List<string> titulares, List<double> saldos)
+        static void RegistrarNovoUsuario(List<string> cpfs, List<string> titulares, List<double> saldos, List<string> senhas)
         {
             Console.WriteLine("Digite o cpf: ");
             cpfs.Add(Console.ReadLine());
             Console.WriteLine("Digite o nome: ");
             titulares.Add(Console.ReadLine());
+            Console.WriteLine("Digite uma senha: ");
+            senhas.Add(Console.ReadLine());
             saldos.Add(0);
         }
 
+
+        static void DeletarUsuariio(List<string> cpfs, List<string> titulares, List<double> saldos, List<string> senhas)
+        {
+            Console.WriteLine("Digite o seu cpf");
+            string cpfParaDeletar = Console.ReadLine();
+            int indexParaDeletar = cpfs.FindIndex(d => d == cpfParaDeletar);
+
+            if (indexParaDeletar == -1)
+            {
+                Console.WriteLine("Não foi possivel deletar este usuário");
+                Console.WriteLine("MOTIVO: Conta não encontrada.");
+
+            }
+
+            cpfs.Remove(cpfParaDeletar);
+            titulares.RemoveAt(indexParaDeletar);
+            senhas.RemoveAt(indexParaDeletar);
+            saldos.RemoveAt(indexParaDeletar);
+
+            Console.WriteLine("Conta deletada com sucesso!");
+        }
         static void ListarTodasAsContas(List<string> cpfs, List<string> titulares, List<double> saldos)
         {
             for(int i = 0; i < cpfs.Count; i++)
@@ -38,7 +62,9 @@
             //dados
             List<string> cpfs = new List<string>();
             List<string> titulares = new List<string>();
+            List<string> senhas = new List<string>();
             List<double> saldos = new List<double>();
+
 
 
             int option;
@@ -55,7 +81,7 @@
                     case 0: Console.WriteLine("Encerrando programa!");
                         break;
                     case 1:
-                        RegistrarNovoUsuario(cpfs, titulares, saldos);
+                        RegistrarNovoUsuario(cpfs, titulares, saldos, senhas);
                         break;
                     case 2: Console.WriteLine("Faz o que é pedido na opção 2");
                         break;
